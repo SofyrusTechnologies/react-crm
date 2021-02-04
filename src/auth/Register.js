@@ -18,46 +18,7 @@ const Register = (props) =>  {
     }
     
     const onRegister = (e) => {
-     e.preventDefault();
-
-  onRegister(){
-    if(this.state.subDomain !== '') {
-      if(this.state.username !== '') {
-        if(this.state.email !== '') {
-          if(this.state.password !== '') {
-
-
-
-            fetch(`${DOMAIN}register/`,
-
-
-              { method: 'POST',
-                headers: 
-                  {
-                    'Content-Type': 'application/json',    
-                    'company': localStorage.getItem('SubDomain')
-                  },
-                body: JSON.stringify({ 
-                  sub_domain: this.state.subDomain, 
-                  username: this.state.username,
-                  email: this.state.email,
-                  password: this.state.password  
-                })
-              }
-            )
-            .then((response) => response.json())
-            .then(response => {
-              if(response.status === 'failure') {
-                this.setState({ errors: response })
-              } else {
-                this.props.history.push('/validate-domain')
-              }
-            })
-          } else {
-            this.setState({ errors: {password: 'please enter password'} })
-          } 
-        } else {
-          this.setState({ errors: {email: 'please enter email'} })
+     e.preventDefault();  
 
      const validationResults = Validations(registrationDetails);
      setErrors(validationResults);        
@@ -122,3 +83,4 @@ const Register = (props) =>  {
 }
 
 export default Register;
+

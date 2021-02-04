@@ -8,7 +8,8 @@ export default function FileInput (props) {
         attrPlaceholder,
         inputId,
         isRequired,
-        getFile
+        getFile,
+        error
     } = props;
 
   return (
@@ -18,7 +19,7 @@ export default function FileInput (props) {
         <label htmlFor="exampleInputEmail1" className="name d-block">{labelName}{(isRequired) ? <span className="error_marker" style={{color:"red"}}>*</span> : ''} </label>
         <input type="file" name={attrName} className="" placeholder={attrPlaceholder} id={inputId}
         onChange={getFile}/>
-        <span className="error error_message"></span>        
+        <span className="error error_message">{error}</span>
       </div>
       </div>
     </>

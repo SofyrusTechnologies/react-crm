@@ -28,6 +28,7 @@ export default class ValidateDomain extends Component {
                         this.setState({ errors: { message: 'Company does not exist'}})
                     } else {
                         const redirectUrl = `//${this.state.domain}.bottlecrm.com/app/login`;                                                                                                            
+                        // const redirectUrl = `//${this.state.domain}.bt:3000/app/login`;
                         window.location.href = redirectUrl;
                     }                    
                 });

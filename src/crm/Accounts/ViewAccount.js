@@ -26,8 +26,7 @@ export default function ViewAccount (props) {
                 <>
                     <div
                         id="mainbody"
-                        className="main_container"
-                        style={{ marginTop: '65px' }}
+                        className="main_container main_container_mt"
                     >
                         <BreadCrumb target="accounts" action={accountObject.name} />
                         <div className="main_container" id="maincontainer">

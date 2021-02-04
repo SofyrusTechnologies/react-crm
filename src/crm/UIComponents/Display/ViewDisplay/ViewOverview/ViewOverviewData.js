@@ -10,7 +10,7 @@ export default function ViewOverviewData (props) {
             <div className="row marl">{modalResult}</div>
             <div className="col-md-12">
                 <div className="created_information pl-0">
-          Created by <b>{createdBy}</b> created on{' '}
+          Created by <b>{createdBy}</b> created on
                     <b title={momentTimeFormats(createdOn)[1]}>
                         {momentTimeFormats(createdOn)[0]}
                     </b>

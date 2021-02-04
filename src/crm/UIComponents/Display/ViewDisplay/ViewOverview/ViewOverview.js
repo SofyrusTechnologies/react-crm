@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ViewOverviewData from './ViewOverviewData';
 
 export default function ViewOverView (props) {
+    
     let {
         id,
         name,
@@ -9,24 +10,25 @@ export default function ViewOverView (props) {
         email,
         status,
         contacts,
-        lead,
-        billing_address_line,
-        billing_city,
-        billing_state,
-        billing_country,
-        billing_postcode,
+        lead,              
         tags,
         created_by,
-        created_on
-    } = props.object;
+        created_on,        
+    } = props;
 
-    const [isEditButton, setIsEditButton] = useState(true);
-    const [displayEditButton, setDisplayEditButton] = useState('hide');
+    let address_line = (props.address_line) ? (props.address_line+ ', '): '';
+    let city = (props.city) ? (props.city+ ', '): '';
+    let state = (props.state) ? (props.state+ ', '): '';
+    let country = (props.country) ? (props.country+ ', '): '';
+    let postcode = (props.postcode) ? (props.postcode+ ', '): '';
 
-  const displayActionButton = () => {
-    (isEditButton) ? setDisplayEditButton('display_edit'): setDisplayEditButton('hide');
-    setIsEditButton(!isEditButton);
-  }
+    // const [isEditButton, setIsEditButton] = useState(true);
+    // const [displayEditButton, setDisplayEditButton] = useState('hide');
+
+//   const displayActionButton = () => {
+//     (isEditButton) ? setDisplayEditButton('display_edit'): setDisplayEditButton('hide');
+//     setIsEditButton(!isEditButton);
+//   }
   
   let dataObject = {
     name,
@@ -34,8 +36,8 @@ export default function ViewOverView (props) {
     email,
     status,
     contacts,
-    lead: (lead !== null && lead !== undefined) ? lead.title : '',
-    address: billing_address_line + ', ' + billing_city + ', ' + billing_state + ', ' + billing_country + ', ' + billing_postcode,    
+    lead: (lead !== null && lead !== undefined) ? lead.title : '',    
+    address: address_line + city + state + country + postcode,
     tags
   } 
     
@@ -45,20 +47,21 @@ export default function ViewOverView (props) {
                 <h5 className="overview">
                     <span className="float-left title title_overview">Overview</span>
                     <span className="mt-0">
-                        <div className="dropdown buttons_row">
-                            <button
+                        <div className="overview__action--btns-div dropdown buttons_row">
+                            {/* <button
                                 className="btn_action dropdown-toggle"
-                                onClick={displayActionButton}
-                            >
-                                {' '}
-                Actions <span className="caret" />
+                                onClick={displayActionButton}> Actions <span className="caret" />
+                            </button> */}
+                            <button
+                                className="overview__action--btn btn_action dropdown-toggle" data-toggle="dropdown"
+                                > Actions <span className="caret" />
                             </button>
+                            <div className="overview__dropdown-menu border-0 dropdown-menu">
                             <a
-                                href={`/accounts/${id}/edit`}
-                                className={`btn_edit ${displayEditButton}`}
-                            >
-                Edit
+                                href={`/app/${props.to}/${id}/edit`}
+                                className="overview__btn--edit dropdown-item">Edit
                             </a>
+                            </div>                            
                         </div>
                     </span>
                 </h5>

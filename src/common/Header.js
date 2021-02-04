@@ -26,8 +26,9 @@ function Header() {
             >
               bottlecrm
             </a>
-            <div className="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">              
-              <a className="dropdown-item" href="/marketing">Marketing</a>
+            <div className="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+              {/* <a className="dropdown-item" href="/sales">Sales</a> */}
+              <a className="dropdown-item" href="/app/marketing">Marketing</a>
             </div>
           </div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,18 +75,18 @@ function Header() {
 
           <ul className="navbar-nav navbar-right my-2 my-lg-0">
             <li className="nav-item dropdown">
-              <a onClick={() => setUserMenu(!userMenu)} className="dropdown-toggle abcd nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <a className="dropdown-toggle abcd nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="https://bottlecrm.s3.amazonaws.com/images/user.png" alt="Micro profile pic" />
                 <b className="caret"></b>
               </a>
-              <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style={{ display: userMenu ? 'block' : 'none' }}>
+              <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <Link to='/user' className="dropdown-item">Users</Link>
                 <Link to='/settings/contacts' className="dropdown-item">Settings</Link>
                 <a className="dropdown-item">Change Password</a>
                 <Link to='profile' className="dropdown-item">Profile</Link>
                 <a onClick={() => {
                   localStorage.clear()
-                  const redirectUrl = `//localhost:3000/validate-domain`
+                  const redirectUrl = `//bottlecrm.com/validate-domain`
 
                   window.location.href = redirectUrl;
                 }} 
@@ -121,3 +122,4 @@ function Header() {
 }
 
 export default Header;
+
